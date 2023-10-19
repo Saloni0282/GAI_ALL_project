@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #030f1d;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 5px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Code box theme */
+        code {
+            background-color: #f2f2f2;
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 3px;
+            font-family: "Courier New", monospace;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    /* Common CSS for buttons */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff; /* Default button color */
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Button color on hover */
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Button color variations */
+.btn-primary {
+    background-color: #007bff; /* Primary button color */
+}
+
+.btn-success {
+    background-color: #28a745; /* Success button color */
+}
+
+.btn-warning {
+    background-color: #ffc107; /* Warning button color */
+}
+
+.btn-info {
+    background-color: #17a2b8; /* Info button color */
+}
+
+    </style>
+</head>
+<body>
+    <h1>Current Data</h1>
+    <div class="container">
+        
+        <ul>
+            {% for key, value in data.items() %}
+                <li><code>{{ key }}:</code> {{ value }}</li>
+            {% endfor %}
+        </ul>
+        <!-- <a href="/create">Create New Entry</a> -->
+    <div class="buttons-container">
+        <a href="/create" class="btn btn-primary">Create</a>
+        <!-- <a href="/read" class="btn btn-success">Read</a> -->
+        <a href="/update" class="btn btn-warning">Update</a>
+        <a href="/delete" class="btn btn-info">Delete</a>
+    </div>
+    </div>
+</body>
+</html>

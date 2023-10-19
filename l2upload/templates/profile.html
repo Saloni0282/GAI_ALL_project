@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>User Profile</h1>
+    <h2>Welcome, {{ username }}!</h2>
+    
+    <div>
+        <h3>Your Profile</h3>
+        <p><strong>Username:</strong> {{ username }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+        
+        <!-- Display the profile picture if available -->
+        {% if profile_picture %}
+            <!-- <img src="{{ url_for('profile_picture', username=username) }}" alt="Profile Picture" width="150"> -->
+            <img id="profile-picture" src="{{ url_for('profile_picture', username=username) }}" alt="Profile Picture">
+
+        {% endif %}
+
+        <form action="/upload_profile_picture" method="POST" enctype="multipart/form-data">
+            <input type="file" name="profile_picture" accept=".jpg, .jpeg, .png">
+            <input type="submit" value="Upload Profile Picture">
+        </form>
+
+    </div>
+</body>
+</html>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#profile-picture').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#profile-picture-input").change(function () {
+        readURL(this);
+    });
+</script>
+

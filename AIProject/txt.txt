@@ -1,0 +1,19 @@
+curl \
+    -X GET 'https://3da34119-7513-4d13-b1f8-bab9613755ab.us-east4-0.gcp.cloud.qdrant.io:6333' \
+    --header 'api-key: paDhLXZrA6za_Ix0mCL1_gbbBY4tLRiVLFGzfM_0Xno6IdlIMN6Kig'
+
+
+langchain
+python-dotenv
+streamlit
+openai
+qdrant-client
+tiktoken
+
+
+# uncomment to use huggingface llms
+# huggingface-hub==0.14.1
+
+# uncomment to use instructor embeddings
+# InstructorEmbedding==1.0.1
+# sentence-transformers==2.2.2

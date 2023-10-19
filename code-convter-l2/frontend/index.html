@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub OAuth Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #140202;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            border-color: #1a0101;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #a99d9d;
+            text-align: center;
+        }
+
+        button {
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            /* color: #0074d9; */
+            color: #0f0f0f;
+        }
+img{
+    width: 50%;
+    border-radius: 100%;
+}
+
+        @media screen and (max-width: 480px) {
+            .container {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GitHub OAuth</h1>
+        <img src="https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png" alt="">
+        <p>Click the button below to authenticate with GitHub:</p>
+        
+        <a href = "https://github.com/login/oauth/authorize?client_id=440d1168a2971734feaa&scope=user:email"><button id="githubLoginButton">Log in with GitHub</button></i></a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+[
+    {
+        "dish_id": 1,
+        "dish_name": "fish",
+        "price": 250.0,
+        "availability": true
+    },
+    {
+        "dish_id": 2,
+        "dish_name": "curry",
+        "price": 80.0,
+        "availability": true
+    },
+    {
+        "dish_id": 3,
+        "dish_name": "rice",
+        "price": 56.0,
+        "availability": true
+    },
+    {
+        "dish_id": 5,
+        "dish_name": "chinese",
+        "price": 56.0,
+        "availability": true
+    },
+    {
+        "dish_id": 6,
+        "dish_name": "mixture",
+        "price": 56.0,
+        "availability": true
+    }
+]

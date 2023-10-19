@@ -1,0 +1,17 @@
+[
+    {
+        "order_id": 1,
+        "rating": 4,
+        "comment": "delicious!!!"
+    },
+    {
+        "order_id": 4,
+        "rating": 4,
+        "comment": "good!!!"
+    },
+    {
+        "order_id": 6,
+        "rating": 5,
+        "comment": "ok"
+    }
+]

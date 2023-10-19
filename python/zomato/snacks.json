@@ -1,0 +1,26 @@
+[
+    {
+        "snack_id": 1,
+        "snack_name": "Chips",
+        "price": 2.99,
+        "quantity": 10
+    },
+    {
+        "snack_id": 2,
+        "snack_name": "Popcorn",
+        "price": 3.49,
+        "quantity": 15
+    },
+    {
+        "snack_id": 3,
+        "snack_name": "Nachos",
+        "price": 4.99,
+        "quantity": 8
+    },
+    {
+        "snack_id": 4,
+        "snack_name": "crax",
+        "price": 12.0,
+        "quantity": 80
+    }
+]

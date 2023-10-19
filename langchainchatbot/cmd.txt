@@ -1,0 +1,17 @@
+# Create a virtual environment
+python -m venv venv
+
+# Activate the virtual environment (on Windows, using Command Prompt)
+venv\Scripts\activate
+
+# Install python-dotenv
+pip install python-dotenv
+
+# Install langchain
+pip install langchain
+
+# Install openai
+pip install openai
+
+
+pip freeze > requirements.txt

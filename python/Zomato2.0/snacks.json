@@ -1,0 +1,20 @@
+[
+    {
+        "snack_id": 1,
+        "snack_name": "popcorn",
+        "price": 60.0,
+        "quantity": 50
+    },
+    {
+        "snack_id": 2,
+        "snack_name": "succi",
+        "price": 80.0,
+        "quantity": 96
+    },
+    {
+        "snack_id": 3,
+        "snack_name": "momo",
+        "price": 80.0,
+        "quantity": 100
+    }
+]

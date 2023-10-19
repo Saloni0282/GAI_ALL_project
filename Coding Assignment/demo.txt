@@ -1,0 +1,118 @@
+const express = require('express');
+const axios = require('axios');
+const mongoose = require('mongoose');
+
+const app = express();
+const port = 8000;
+
+app.use(express.json());
+
+// MongoDB Connection
+mongoose.connect('mongodb+srv://faiyaz:dulraz@cluster0.tohzp.mongodb.net/github?retryWrites=true&w=majority');
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+let Repository; // Mongoose model for the 'repositories' collection
+
+// Define the Mongoose schema for the owner
+const ownerSchema = new mongoose.Schema({
+  id: Number,
+  avatar_url: String,
+  html_url: String,
+  type: String,
+  site_admin: Boolean,
+});
+
+// Define the Mongoose schema for the collection
+const repositorySchema = new mongoose.Schema({
+  id: Number,
+  name: String,
+  html_url: String,
+  description: String,
+  created_at: Date,
+  open_issues: Number,
+  watchers: Number,
+  owner: ownerSchema, // Use the nested schema for the owner
+});
+
+// Create the Mongoose model
+Repository = mongoose.model('Repository', repositorySchema);
+
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+
+// API 1: Save GitHub Data to MongoDB
+app.post('/github', async (req, res) => {
+  try {
+    const { url } = req.body;
+
+    // Fetch GitHub data
+    const response = await axios.get(url);
+    const githubData = response.data;
+
+    // Save data to MongoDB
+    for (const repo of githubData) {
+      const {
+        id, name, html_url, description, created_at, open_issues, watchers, owner,
+      } = repo;
+
+      // Use the Mongoose model to create or update
+      const result = await Repository.findOneAndUpdate(
+        { id },
+        {
+          $set: {
+            id,
+            name,
+            html_url,
+            description,
+            created_at,
+            open_issues,
+            watchers,
+            owner,
+          },
+        },
+        { upsert: true, new: true } // new: true returns the updated document
+      );
+
+      console.log(`Repository ${name} saved or updated: ${result.id}`);
+    }
+    res.status(200).json({ message: `GitHub data of  saved to MongoDB` });
+  } catch (error) {
+    console.error('Error saving GitHub data:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// API 2: Retrieve Saved GitHub Data from MongoDB
+app.get('/github/:id', async (req, res) => {
+  try {
+    const repoId = parseInt(req.params.id);
+    const repo = await Repository.findOne({ id: repoId });
+
+    if (!repo) {
+      res.status(404).json({ error: 'Repository not found' });
+      return;
+    }
+
+    res.status(200).json(repo);
+  } catch (error) {
+    console.error('Error retrieving GitHub data:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+app.get("/github",async(req,res)=>{
+    try {
+        const repo = await Repository.find();
+        res.status(200).json(repo);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+})
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});

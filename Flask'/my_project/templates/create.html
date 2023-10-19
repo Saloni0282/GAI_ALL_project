@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            background-color: #030f1d; /* Green background color */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745; /* Green background color */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        input[type="submit"]:hover {
+            /* Darker green on hover */
+            background-color: #0056b3; /* Button color on hover */
+            transform: scale(1.05); /* Scale up on hover */
+        }
+        /* Common CSS for buttons */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007bff; /* Default button color */
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Button color on hover */
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Button color variations */
+.btn-primary {
+    background-color: #007bff; /* Primary button color */
+}
+
+.btn-success {
+    background-color: #28a745; /* Success button color */
+}
+
+.btn-warning {
+    background-color: #ffc107; /* Warning button color */
+}
+
+.btn-info {
+    background-color: #17a2b8; /* Info button color */
+}
+
+    </style>
+</head>
+<body>
+    <h1>Create Entry</h1>
+    <form method="POST">
+        <label for="key">Key:</label>
+        <input type="text" id="key" name="key" required><br><br>
+        
+        <label for="value">Value:</label>
+        <input type="text" id="value" name="value" required><br><br>
+        
+        <input type="submit" value="Create">
+    <div class="buttons-container">
+        <a href="/read" class="btn btn-success">Read</a>
+        <a href="/update" class="btn btn-warning">Update</a>
+        <a href="/delete" class="btn btn-info">Delete</a>
+    </div>
+    </form>
+</body>
+</html>

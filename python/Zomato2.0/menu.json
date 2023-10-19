@@ -1,0 +1,30 @@
+[
+    {
+        "dish_id": 4,
+        "dish_name": "rice",
+        "price": 55.0,
+        "availability": true,
+        "quantity": 88
+    },
+    {
+        "dish_id": 1,
+        "dish_name": "samosha",
+        "price": 12.0,
+        "availability": true,
+        "quantity": 19
+    },
+    {
+        "dish_id": 2,
+        "dish_name": "fish",
+        "price": 237.5,
+        "availability": true,
+        "quantity": 80
+    },
+    {
+        "dish_id": 6,
+        "dish_name": "fried rice",
+        "price": 80.0,
+        "availability": true,
+        "quantity": 90
+    }
+]

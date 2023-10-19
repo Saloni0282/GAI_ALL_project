@@ -1,0 +1,18 @@
+[
+    {
+        "name": "samosha",
+        "category": "junk",
+        "quantity": 56,
+        "price": 12.0,
+        "quantity_sold": 26,
+        "total_sales": 312.0
+    },
+    {
+        "name": "fishcurry",
+        "category": "dish",
+        "quantity": 25,
+        "price": 260.0,
+        "quantity_sold": 36,
+        "total_sales": 9360.0
+    }
+]

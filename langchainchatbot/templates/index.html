@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add custom styling for chat messages */
+        .user-message {
+            background-color: #DCF8C6;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #F0F0F0;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            text-align: left;
+        }
+        body {
+            background-color: rgb(37, 31, 31);
+        }
+        h2{
+            color: #DCF8C6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center">Chat App</h2>
+                <div id="chat" class="border p-3" style="max-height: 300px; overflow-y: auto;"></div>
+                <div class="input-group mt-3">
+                    <input type="text" id="userMessage" class="form-control" placeholder="Type your message...">
+                    <div class="input-group-append">
+                        <button id="sendMessage" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Function to append a user message to the chat
+            function appendUserMessage(message) {
+                $('#chat').append('<div class="user-message">' + message + '</div>');
+            }
+
+            // Function to append a bot message to the chat
+            function appendBotMessage(message) {
+                $('#chat').append('<div class="bot-message">' + message + '</div>');
+            }
+
+            // Handle sending messages
+            $('#sendMessage').click(function() {
+                var userMessage = $('#userMessage').val();
+
+                if (userMessage.trim() !== '') {
+                    // Append user message to the chat
+                    appendUserMessage(userMessage);
+
+                    // Prepare the message data as an object
+                    var messageData = {
+                        message: userMessage
+                    };
+
+                    // Send the user message to the server using a POST request
+                    $.ajax({
+                        url: '/api/chat', // This URL should match your Flask route
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(messageData),
+                        success: function(response) {
+                            // Append bot response to the chat
+                            appendBotMessage(response.message);
+                        },
+                        error: function() {
+                            appendBotMessage("Error: Unable to send the message.");
+                        }
+                    });
+
+                    // Clear the input field
+                    $('#userMessage').val('');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
